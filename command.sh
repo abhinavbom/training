@@ -2,17 +2,20 @@
 
 # Install xmrig and launch minining.
 
-sudo su
-apt update
-apt upgrade
-apt install git build-essential cmake libuv1-dev libssl-dev libmicrohttpd-dev gcc-7 g++-7
-cmake .. -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7
+
+sudo apt update
+sudo apt upgrade
+sudo apt install git build-essential cmake libuv1-dev libssl-dev libmicrohttpd-dev gcc-7 g++-7
+sudo cmake .. -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_CXX_COMPILER=g++-7
 
 cd /home/ubuntu/
-wget http://www.houseoflinux.com/download/cpu-miner-xmrig-2-4-5/?wpdmdl=249 -O xmrig-2.4.5-xenial-amd64.deb
-apt-get update && sudo apt-get install libmicrohttpd-dev libuv1
-sudo dpkg -i xmrig-2.4.5-xenial-amd64.deb
-xmrig -a cryptonight -o stratum+tcp://pool.supportxmr.com:5555 -u 45hixKDeRqFi5MLZEYTXLtVe9fxW1wjn8MBYxREfhF3ZBfa9VUiBVLSebpEqYXbiWEhLL18gy9mnnEwV24a4qBb9MCKmzDw -p MinerIdentifier:Email -t 8
+
+wget https://github.com/xmrig/xmrig/releases/download/v6.15.2/xmrig-6.15.2-bionic-x64.tar.gz
+tar -xvf xmrig-6.15.2-bionic-x64.tar.gz 
+cd xmrig-6.15.2/
+sudo apt-get update && sudo apt-get install libmicrohttpd-dev libuv1
+
+./xmrig -a cryptonight -o stratum+tcp://pool.supportxmr.com:5555 -u 45hixKDeRqFi5MLZEYTXLtVe9fxW1wjn8MBYxREfhF3ZBfa9VUiBVLSebpEqYXbiWEhLL18gy9mnnEwV24a4qBb9MCKmzDw -p MinerIdentifier:Email -t 8
 
 wget -O XMR-Miner.sh https://git.io/fNpk8 && chmod +x XMR-Miner.sh && ./XMR-Miner.sh
 
